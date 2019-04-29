@@ -133,7 +133,7 @@ Example:
 <var>计算机变量</var>
 ```
 
-更多： <address>, <bdo>定义文字方向，<ins>	定义插入字, <del>	定义删除字, <abbr>	定义缩写, <cite>	定义引用、引证, <blockquote>	定义长的引用, <dfn>	定义一个定义项目 ...
+更多： "<address>, <bdo>定义文字方向，<ins>	定义插入字, \<del\>定义删除字, <abbr>", 定义缩写, <cite>	定义引用、引证, <blockquote>	定义长的引用, <dfn>	定义一个定义项目 ..."
 
 ## HTML <head>
 
