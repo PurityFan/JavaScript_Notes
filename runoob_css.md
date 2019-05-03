@@ -145,3 +145,154 @@ note: `a:hover` 必须跟在 `a:link` 和 `a:visited`后面, `a:active` 必须�
 * 设置不同的列表项标记为有序列表 
 * 设置不同的列表项标记为无序列表 
 * 设置列表项标记为图像 
+
+不同的列表标记：
+
+```html
+<head>
+<style>
+ul.a {list-style-type:circle;}
+ul.b {list-style-type:square;}
+</style>
+</head>
+
+/* 使用 a 格式 */
+<ul class="a">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Coca Cola</li>
+</ul>
+
+/* 使用 b 格式 */
+<ul class="b">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Coca Cola</li>
+</ul>
+```
+
+使用图标进行列表标记
+
+```html
+<style>
+ul 
+{
+	list-style-image:url('sqpurple.gif');
+}
+</style>
+
+<ul>
+<li>Coffee</li>
+<li>Tea</li>
+<li>Coca Cola</li>
+</ul>
+```
+
+## CSS 表格
+
+指定CSS表格边框，使用border属性， 显示一个表的单个边框，使用 border-collapse属性，text-align属性设置表格水平对齐方式， Width和height属性设置表格宽度和高度，使用td和th元素的填充属性
+
+```html
+<style>
+table, td, th
+{
+	border:1px solid green;
+}
+th
+{
+	background-color:green;
+	color:white;
+}
+</style>
+```
+
+## CSS 盒子模型（Box Model）
+
+CSS盒模型本质上是一个盒子，封装周围的HTML元素，包括四部分： Margin(外边距) - 清除边框外的区域，外边距是透明的， Border(边框) - 围绕在内边距和内容外的边框， Padding(内边距) - 清除内容周围的区域，内边距是透明的， Content(内容) - 盒子的内容，显示文本和图像。
+
+当指定一个CSS元素的宽度和高度属性时，你**只是设置内容区域**的宽度和高度。要知道，完全大小的元素，还必须添加填充，边框和边距。
+
+下面的例子中的元素的总宽度为300px：
+
+```html
+div {
+    width: 300px;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
+}
+```
+
+即： 总元素的宽度=宽度+左填充+右填充+左边框+右边框+左边距+右边距
+
+总元素的高度=高度+顶部填充+底部填充+上边框+下边框+上边距+下边距
+
+Note: 一旦为页面设置了恰当的 DTD，大多数浏览器都会按照上面的图示来呈现内容。然而 **IE 5 和 6** 的呈现却是不正确的。根据 W3C 的规范，元素内容占据的空间是由 width 属性设置的，而内容周围的 padding 和 border 值是另外计算的。不幸的是，IE5.X 和 6 在怪异模式中使用自己的非标准模型。`这些浏览器的 width 属性不是内容的宽度，而是内容、内边距和边框的宽度的总和`。虽然有方法解决这个问题。但是目前最好的解决方案是回避这个问题。也就是，不要给元素添加具有指定宽度的内边距，而是尝试将内边距或外边距添加到元素的父元素和子元素。IE8 及更早IE版本不支持设置填充的宽度和边框的宽度属性。解决IE8及更早版本不兼容问题可以在HTML页面声明 <!DOCTYPE html>即可
+
+## CSS 边框
+
+`border-style`属性用来定义边框的样式， `border-width` 属性为边框指定宽度， `border-color` 边框颜色， 
+
+```html
+/* 单独设置各边的样子 */
+p
+{
+    border-top-style:dotted;
+    border-right-style:solid;
+    border-bottom-style:dotted;
+    border-left-style:solid;
+}
+```
+
+## CSS 轮廓（outline）
+
+轮廓（outline）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。轮廓（outline）属性指定元素轮廓的样式、颜色和宽度。
+
+```html
+<style>
+p 
+{
+	border:1px solid red;
+	outline-style:dotted;
+	outline-color:#00ff00;
+}
+</style>
+```
+
+## CSS 外边距
+
+CSS margin(外边距)属性定义元素周围的空间
+
+可能的值：
+
+* auto：设置浏览器边距。这样做的结果会依赖于浏览器
+* length：定义一个固定的margin（使用像素，pt，em等）
+* %：定义一个使用百分比的边距
+
+```html
+<style>
+p
+{
+	background-color:yellow;
+}
+p.margin
+{
+	margin-top:100px;
+	margin-bottom:100px;
+	margin-right:50px;
+	margin-left:50px;
+}
+</style>
+```
+
+## CSS padding (填充)
+
+CSS padding（填充）是一个简写属性，定义元素边框与元素内容之间的空间，即上下左右的内边距
+
+可能的值：
+
+* length：定义一个固定的margin（使用像素，pt，em等）
+* %：定义一个使用百分比的边距
+
+## CSS 分组和嵌套
+
