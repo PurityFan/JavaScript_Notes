@@ -296,3 +296,211 @@ CSS padding（填充）是一个简写属性，定义元素边框与元素内容
 
 ## CSS 分组和嵌套
 
+> 分组选择，为了减少代码，把样式相同的分组
+
+也就是说：
+
+```html
+h1
+{
+    color:green;
+}
+h2
+{
+    color:green;
+}
+p
+{
+    color:green;
+}
+```
+
+可以简记为：
+
+```html
+h1,h2,p
+{
+    color:green;
+}
+```
+
+> 嵌套：适用于选择器内部的选择器(就是一种组合)
+
+example:
+
+* p{ }: 为所有 p 元素指定一个样式。
+* .marked{ }: 为所有 class="marked" 的元素指定一个样式。
+* .marked p{ }: 为所有 class="marked" 元素内的 p 元素指定一个样式。
+* p.marked{ }: 为所有 class="marked" 的 p 元素指定一个样式。
+
+## CSS 尺寸
+
+height	设置元素的高度。
+line-height	设置行高。
+max-height	设置元素的最大高度。
+max-width	设置元素的最大宽度。
+min-height	设置元素的最小高度。
+min-width	设置元素的最小宽度。
+width	设置元素的宽度。
+
+## CSS Display（显示）与 Visibility（可见性）
+
+display属性设置一个元素应如何显示，visibility属性指定一个元素应可见还是隐藏。
+
+隐藏一个元素可以通过把display属性设置为**none**，或把visibility属性设置为**hidden**。但是请注意，这两种方法会产生不同的结果。
+
+`visibility:hidden`可以隐藏某个元素，但隐藏的元素**仍需占用与未隐藏之前一样的空间**。也就是说，该元素虽然被隐藏了，但仍然会影响布局。`display:none`可以隐藏某个元素，且隐藏的元素不会占用任何空间。也就是说，该元素不但被隐藏了，而且该元素原本占用的空间也会从页面布局中消失。
+
+CSS Display - 块和内联元素
+
+块元素是一个元素，占用了全部宽度，在前后都是换行符。块元素的例子：`<h1>`, `<p>`, `<div>`
+内联元素只需要必要的宽度，不强制换行。内联元素的例子：`<span>`, `<a>`
+
+把列表项显示为内联元素：
+
+```html
+li{display:inline;}
+```
+
+把span元素作为块元素：
+
+```html
+span {display:block;}
+```
+
+Note: 注意：变更元素的显示类型看该元素是如何显示，它是什么样的元素。例如：一个内联元素设置为display:block是不允许有它内部的嵌套块元素
+
+## CSS Position (定位)
+
+position 属性指定了元素的定位类型。position属性的5个值：static，relative，fixed, absolute, sticky
+
+> static
+
+HTML 元素的默认值，即没有定位，遵循正常的文档流对象。
+
+> fixed
+
+元素的位置相对于浏览器窗口是固定位置。即使窗口是滚动的它也不会移动。Fixed定位使元素的位置与文档流无关，因此不占据空间。Fixed定位的元素可能和其他元素重叠。
+
+Note： Fixed 定位在 IE7 和 IE8 下需要描述 !DOCTYPE 才能支持。
+
+> relative
+
+相对定位元素的定位是相对其正常位置。相对定位元素经常被用来作为绝对定位元素的容器块。可能和其他元素重叠。
+
+> absolute 
+
+绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于`<html>`。absolute 定位使元素的位置与文档流无关，因此不占据空间。absolute 定位的元素和其他元素重叠。
+
+> sticky
+
+所以可以把它称之为粘性定位。position: sticky; 基于用户的滚动位置来定位。粘性定位的元素是依赖于用户的滚动，在 position:relative 与 position:fixed 定位之间切换。它的行为就像 position:relative; 而当页面滚动超出目标区域时，它的表现就像 position:fixed;，它会固定在目标位置。元素定位表现为在跨越特定阈值前为相对定位，之后为固定定位。
+
+这个特定阈值指的是 top, right, bottom 或 left 之一，换言之，指定 top, right, bottom 或 left 四个阈值其中之一，才可使粘性定位生效。否则其行为与相对定位相同。
+
+Note: Internet Explorer, Edge 15 及更早 IE 版本不支持 sticky 定位。 Safari 需要使用 -webkit- prefix (查看以下实例)。
+
+Example：小球不出框，永远显示的条幅
+
+> 重叠元素的顺序
+
+元素的定位与文档流无关，所以它们可以覆盖页面上的其它元素。`z-index`属性指定了一个元素的堆叠顺序（哪个元素应该放在前面，或后面）。一个元素可以有正数或负数的堆叠顺序：
+
+```html
+img
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:-1;
+}
+```
+
+具有更高堆叠顺序的元素总是在较低的堆叠顺序元素的前面。如果两个定位元素重叠，没有指定z - index，最后定位在HTML代码中的元素将被显示在最前面。
+
+## CSS 布局 Overflow
+
+CSS overflow 属性可以控制内容溢出元素框时在对应的元素区间内添加滚动条。
+
+overflow属性有以下值：
+
+* visible	默认值。内容不会被修剪，会呈现在元素框之外。
+* hidden	内容会被修剪，并且其余内容是不可见的。
+* scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+* auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+* inherit	规定应该从父元素继承 overflow 属性的值。
+
+注意:overflow 属性只工作于指定高度的块元素上。
+注意: 在 OS X Lion ( Mac 系统) 系统上，滚动条默认是隐藏的，使用的时候才会显示 (设置 "overflow:scroll" 也是一样的)。
+
+example:
+
+```html
+<style>
+#overflowTest {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    width: 80%;
+    height: 100px;
+    overflow: scroll;
+    border: 1px solid #ccc;
+}
+</style>
+
+<div id="overflowTest">
+<p> ... </p>
+</div>
+```
+
+## CSS Float (浮动)
+
+CSS 的 Float（浮动），会使元素向左或向右移动，其周围的元素也会重新排列。Float（浮动），往往是用于图像，但它在布局时一样非常有用。
+
+元素的水平方向浮动，意味着元素只能左右移动而不能上下移动。一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。浮动元素之后的元素将围绕它。浮动元素之前的元素将不会受到影响。如果图像是右浮动，下面的文本流将环绕在它左边。
+
+> 这样就能实现图片放置于最右的功能
+
+```html
+img
+{
+    float:right;
+}
+```
+
+如果你把几个浮动的元素放到一起，如果有空间的话，它们将彼此相邻。而且还可以根据浏览器的宽度动态调整
+
+清除浮动 - 使用 clear
+
+元素浮动之后，周围的元素会重新排列，为了避免这种情况，使用 clear 属性。
+clear 属性指定元素两侧不能出现浮动元素。也就是说在换行的时候，新的文字应该使用clear，免得新的一行字黏上前面的浮动图片
+
+## CSS 布局 - 水平 & 垂直对齐
+
+要水平居中对齐一个元素(如 <div>), 可以使用 margin: auto;
+
+> 居中对齐
+
+```html
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+```
+
+Note: 如果没有设置 `width` 属性(或者设置 100%)，居中对齐将不起作用
+
+> 还可以使用 position: absolute; 属性来对齐元素:
+
+```html
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+```
+
