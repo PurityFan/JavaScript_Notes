@@ -504,3 +504,72 @@ Note: 如果没有设置 `width` 属性(或者设置 100%)，居中对齐将不�
 }
 ```
 
+## CSS 组合选择符
+
+* 后代选择器(以空格分隔)
+* 子元素选择器(以大于号分隔）
+* 相邻兄弟选择器（以加号分隔）
+* 普通兄弟选择器（以破折号分隔）
+
+> 后代选择器
+
+后代选择器用于选取某元素的后代元素。
+
+example:
+
+```html
+div p
+{
+  background-color:yellow;
+}
+```
+
+这样设置之后，所有在`<div>`里的`<p>`都带有黄色的背景颜色
+
+> 子元素选择器
+
+子元素选择器（Child selectors）只能选择作为某元素子元素的元素
+
+```html
+div>p
+{
+  background-color:yellow;
+}
+```
+
+这样只有div中只有p的会有黄色背景，`<span><p>`都不行
+
+> 相邻兄弟选择器
+
+相邻兄弟选择器（Adjacent sibling selector）可选择紧接在另一元素后的元素，且二者有相同父元素。如果需要选择紧接在另一个元素后的元素，而且二者有相同的父元素，可以使用相邻兄弟选择器（Adjacent sibling selector）。
+
+```html
+div+p
+{
+  background-color:yellow;
+}
+```
+
+在一个`<div></div>` 结束之后，出现的下一个连着的`<p>`会被赋予黄色背景
+
+> 后续兄弟选择器
+
+后续兄弟选择器选取所有指定元素之后的相邻兄弟元素。即选取了所有 `<div>` 元素之后的所有相邻兄弟元素 `<p> `
+
+```html
+div~p
+{
+    background-color: yellow;
+}
+```
+
+## CSS 伪类
+
+CSS伪类是用来添加一些选择器的特殊效果。
+
+伪类的语法：
+
+selector:pseudo-class {property:value;}
+CSS类也可以使用伪类：
+
+selector.class:pseudo-class {property:value;}
