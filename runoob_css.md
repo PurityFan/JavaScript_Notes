@@ -569,7 +569,173 @@ CSS伪类是用来添加一些选择器的特殊效果。
 
 伪类的语法：
 
-selector:pseudo-class {property:value;}
+`selector:pseudo-class {property:value;}`
+
 CSS类也可以使用伪类：
 
-selector.class:pseudo-class {property:value;}
+`selector.class:pseudo-class {property:value;}`
+
+> anchor伪类
+
+在支持 CSS 的浏览器中，链接的不同状态都可以以不同的方式显示
+
+```html
+a:link {color:#FF0000;} /* 未访问的链接 */
+a:visited {color:#00FF00;} /* 已访问的链接 */
+a:hover {color:#FF00FF;} /* 鼠标划过链接 */
+a:active {color:#0000FF;} /* 已选中的链接 */
+```
+
+Note：伪类的名称不区分大小写。
+
+> 伪类与CSS类
+
+伪类可以与 CSS 类配合使用：
+
+a.red:visited {color:#FF0000;}
+ 
+<a class="red" href="css-syntax.html">CSS 语法</a>
+
+> CSS :first-child 伪类
+
+您可以使用 :first-child 伪类来选择父元素的第一个子元素。
+
+注意：在IE8的之前版本必须声明<!DOCTYPE> ，这样 :first-child 才能生效。
+
+Example：匹配第一个 `<p>` 元素
+
+```html
+<style>
+p:first-child
+{
+	color:blue;
+} 
+</style>
+```
+
+这样写之后只有第一个`<p>`的字体会变成蓝色
+
+Example: 匹配所有<p> 元素中的第一个 <i> 元素
+
+```html
+p > i:first-child
+{
+    color:blue;
+}
+```
+style 里这样写了之后，所有`<p>`中的第一个`<i>`都会变蓝
+
+Example: 匹配所有作为第一个子元素的 <p> 元素中的所有 <i> 元素
+
+```html
+p:first-child i
+```
+
+> CSS - :lang 伪类
+
+:lang 伪类使你有能力为不同的语言定义特殊的规则
+
+注意：IE8必须声明<!DOCTYPE>才能支持;lang伪类。
+
+Example:
+
+```html
+<style>
+q:lang(no)
+{
+	quotes: "~" "~";
+}
+</style>
+```
+
+在声明之后，所有`<q lang="no">`都会被显示成是`~`
+
+> CSS: focus伪类
+
+Example:
+
+```html
+<style>
+input:focus
+{
+	background-color:yellow;
+}
+</style>
+```
+
+这样设置之后，`<input type="text" name="fname" />`会在点击框框的时候背景变成黄色
+
+
+## CSS伪元素
+
+CSS伪元素是用来添加一些选择器的特殊效果。
+
+伪元素的语法：
+
+`selector:pseudo-element {property:value;}`
+
+CSS类也可以使用伪元素：
+
+`selector.class:pseudo-element {property:value;}`
+
+> :first-line 伪元素
+
+"first-line" 伪元素用于向文本的首行设置特殊样式。
+
+在下面的例子中，浏览器会根据 "first-line" 伪元素中的样式对 p 元素的第一行文本进行格式化：
+
+```
+p:first-line 
+{
+    color:#ff0000;
+    font-variant:small-caps;
+}
+```
+
+对于这个里面每一个`<p>`的第一行都会改变字体颜色
+
+`first-line`可以有的属性：
+* font properties
+* color properties 
+* background properties
+* word-spacing
+* letter-spacing
+* text-decoration
+* vertical-align
+* text-transform
+* line-height
+* clear
+
+> : first-letter 伪元素
+
+"first-letter" 伪元素用于向文本的首字母设置特殊样式
+
+
+> 伪元素可以结合CSS类： 
+
+```html
+p.article:first-letter {color:#ff0000;}
+
+<p class="article">文章段落</p>
+```
+
+上面的例子会使所有 class 为 article 的段落的首字母变为红色
+
+Note: 可以结合多个伪元素来使用。
+
+> CSS - :before 伪元素
+
+":before" 伪元素可以在元素的内容前面插入新内容。
+
+下面的例子在每个 <h1>元素前面插入一幅图片：
+
+```html
+h1:before 
+{
+    content:url(smiley.gif);
+}
+```
+
+同理还有after伪元素
+
+## CSS导航栏
