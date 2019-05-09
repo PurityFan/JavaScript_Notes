@@ -739,3 +739,110 @@ h1:before
 同理还有after伪元素
 
 ## CSS导航栏
+
+熟练使用导航栏，对于任何网站都非常重要。
+
+使用CSS你可以转换成好看的导航栏而不是枯燥的HTML菜单。
+
+### 导航栏=链接列表
+
+作为标准的HTML基础一个导航栏是必须的。在我们的例子中我们将建立一个标准的HTML列表导航栏。
+
+导航条基本上是一个链接列表，所以使用 `<ul>` 和 `<li>` 元素非常有意义：
+
+```html
+<ul>
+  <li><a href="#home">主页</a></li>
+  <li><a href="#news">新闻</a></li>
+  <li><a href="#contact">联系</a></li>
+  <li><a href="#about">关于</a></li>
+</ul>
+```
+
+在这里加入对ul元素的描述，从列表中删除边距和填充：
+
+```html
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+```
+
+* list-style-type:none - 移除列表前小标志。一个导航栏并不需要列表标记
+* 移除浏览器的默认设置将边距和填充设置为0
+
+> 垂直导航栏
+
+上面的代码，我们只需要 <a>元素的样式，建立一个垂直的导航栏：
+
+```html
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+ 
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+/* 鼠标移动到选项上修改背景颜色 */
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+</style>
+
+<body>
+<ul>
+<li><a href="#home">主页</a></li>
+</ul>
+</body>
+```
+
+* `display:block` - 显示块元素的链接，让整体变为可点击链接区域（不只是文本），它允许我们指定宽度
+* `width:60px` - 块元素默认情况下是最大宽度。我们要指定一个60像素的宽度
+
+Note: 请务必指定 `<a>` 元素在垂直导航栏的的宽度。如果省略宽度，IE6可能产生意想不到的效果。
+
+> 激活/当前导航栏条实例
+
+在点击了选项后，我们可以添加 "active" 类来标准哪个选项被选中：
+
+```html
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+```
+
+当前被选中的项就会展现`.active`里面的内容
+
+> 创建链接并添加边框
+
+可以在 `<li>` or `<a>` 上添加text-align:center 样式来让链接居中。
+
+可以在 border `<ul>` 上添加 border 属性来让导航栏有边框。如果要在每个选项上添加边框，可以在每个 `<li>` 元素上添加border-bottom :
+
+```html
+ul {
+    border: 1px solid #555;
+}
+ 
+li {
+    text-align: center;
+    border-bottom: 1px solid #555;
+}
+ 
+li:last-child {
+    border-bottom: none;
+}
+```
+
